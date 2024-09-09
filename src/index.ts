@@ -1,0 +1,1 @@
+import TypescriptNeuralNetwork from "./Typescript_Neural_network_library_class";

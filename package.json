@@ -1,0 +1,27 @@
+{
+  "name": "typescript_neural_network_library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PashchenkoIvan/Typescript_Neural_network_library.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "IvanPashchenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PashchenkoIvan/Typescript_Neural_network_library/issues"
+  },
+  "homepage": "https://github.com/PashchenkoIvan/Typescript_Neural_network_library#readme",
+  "devDependencies": {
+    "@types/node": "^20.8.4",
+    "typescript": "^5.2.2"
+  }
+}
