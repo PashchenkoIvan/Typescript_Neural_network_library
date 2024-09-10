@@ -21,7 +21,13 @@
   },
   "homepage": "https://github.com/PashchenkoIvan/Typescript_Neural_network_library#readme",
   "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
     "@types/node": "^20.8.4",
+    "@types/synaptic": "^1.0.8",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "cli-progress": "^3.12.0",
+    "synaptic": "^1.1.4"
   }
 }
