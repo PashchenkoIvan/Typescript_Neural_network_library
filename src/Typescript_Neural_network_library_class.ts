@@ -319,3 +319,5 @@ export default class TypescriptNeuralNetwork {
         fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
     }
 }
+
+
