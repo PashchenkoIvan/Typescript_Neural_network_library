@@ -1,3 +1,5 @@
+import {CandleChartInterval_LT} from "binance-api-node";
+
 export type PositionType =
     | "SHORT"
     | "LONG"
@@ -41,4 +43,25 @@ export interface CandleInterface {
     trades: number;
     baseAssetVolume: number;
     quoteAssetVolume: number;
+}
+
+export interface MarketOptions {
+    symbol: string;
+    interval: CandleChartInterval_LT;
+    limit: number
+    endTime: string;
+    positionType: PositionType;
+    takeProfitPrice: number;
+    stopLossPrice: number;
+}
+
+export interface LimitOptions {
+    symbol: string;
+    interval: CandleChartInterval_LT;
+    limit: number
+    endTime: string;
+    positionType: PositionType;
+    orderPrice: number
+    takeProfitPrice: number;
+    stopLossPrice: number;
 }
