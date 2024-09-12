@@ -16,7 +16,7 @@ export default class TypescriptNeuralNetwork {
     private brainFile: string;
 
     constructor(Binance, filePath: string, inputLayerSize: number, hiddenLayersSizes: number[], outputLayerSize: number, brainDataFilePath: string) {
-        this.client = Binance
+        this.client = Binance;
         this.inputLayer = new Layer(inputLayerSize);
         this.hiddenLayers = hiddenLayersSizes.map(size => new Layer(size));
         this.outputLayer = new Layer(outputLayerSize);
@@ -39,21 +39,31 @@ export default class TypescriptNeuralNetwork {
         this.trainer = new Trainer(this.network);
 
         // Load learning data
-        this.learningData = this.loadLearningData(filePath);
+        try {
+            this.learningData = this.loadLearningData(filePath);
+        } catch (error) {
+            console.error(`Failed to load learning data: ${error.message}`);
+            this.learningData = [];
+        }
 
         // Set brain file path
         this.brainFile = brainDataFilePath;
     }
 
     private loadLearningData(filePath: string): TrainingDataInterface[] {
-        if (!fs.existsSync(filePath)) {
-            fs.writeFileSync(filePath, JSON.stringify([]));
-            console.log(`File not found. Created new file at ${filePath}`);
+        try {
+            if (!fs.existsSync(filePath)) {
+                fs.writeFileSync(filePath, JSON.stringify([]));
+                console.log(`File not found. Created new file at ${filePath}`);
+                return [];
+            }
+
+            const fileContent = fs.readFileSync(filePath, 'utf-8');
+            return JSON.parse(fileContent) as TrainingDataInterface[];
+        } catch (error) {
+            console.error(`Error reading file ${filePath}: ${error.message}`);
             return [];
         }
-
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        return JSON.parse(fileContent) as TrainingDataInterface[];
     }
 
     public trainNetwork(learningRate: number, iterations: number): void {
